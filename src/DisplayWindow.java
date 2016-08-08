@@ -1,27 +1,21 @@
 import java.awt.*;
- 
+
 import javax.swing.*;
 
 
-import examplePackage.MyFirstPainter;
-
 public class DisplayWindow extends JPanel{
-	public void paint(Graphics g)
-	{
-	    int width = getWidth();
-	    int height = getHeight();
+	public void paint(Graphics g){
 	    super.paintComponent(g);
-
+	    Cell[][] space = new Cell[20][20];
 	    int xstart=10;
 	    int ystart=10;
-
-	    for(int i = 1; i <= 20; i++)
-	    {
-	        //g.drawLine(xstart, 10, xstart, height-10);
-	        //g.drawLine(10, ystart, width-10, ystart);
-
+	    for(int i=0;i<space[0].length*space[0].length;i++){
+	        g.drawRect(xstart, ystart, 35, 35);
 	        xstart = xstart+35;
-	        ystart = ystart+35;
+	        if(xstart>700){
+	        	xstart=xstart%35;
+	        	ystart=ystart+35;
+	        }    	
 	    }
 	}
 	public static void main(String[] args) {
@@ -29,22 +23,16 @@ public class DisplayWindow extends JPanel{
 		System.out.println("~~~~~");
 		System.out.println("Sheep and Wolves");
 		System.out.println("~~~~~");
-	    GridLayout gridLayout = new GridLayout(20,20);
+	    //GridLayout gridLayout = new GridLayout(20,20);
 
 		JFrame frame = new JFrame("Sheep and Wolves");
-		DisplayWindow p = new DisplayWindow();
-		p.setLayout(gridLayout);
-		JInternalFrame temp = new JInternalFrame();
-		temp.setBackground(new Color(20));
-		temp.setPreferredSize(new Dimension(10, 10));
-		p.setPreferredSize(new Dimension(720,720));
-		p.add(temp);
-		temp.pack();
-		temp.setVisible(true);
+		DisplayWindow cellDrawer = new DisplayWindow();
+		cellDrawer.setPreferredSize(new Dimension(1280,720));
 		
-		frame.add(p);
+		frame.add(cellDrawer);
 		frame.pack();
 		frame.setVisible(true);
+		System.out.println(frame.getSize());
 		
 	}
 
