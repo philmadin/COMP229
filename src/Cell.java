@@ -1,14 +1,17 @@
 import java.awt.Canvas;
 import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.event.MouseListener;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.swing.JPanel;
 
+import org.w3c.dom.events.MouseEvent;
 
-public class Cell extends Canvas{
+
+public class Cell extends Canvas implements MouseListener{
 	
-	static int gameSize=35;
+	static int gameSize=34;
 	static int counter=0;
 	int squareID=0;
 	int exVal =0;
@@ -28,6 +31,31 @@ public class Cell extends Canvas{
 	}
 	public int getID(){
 		return squareID;
+	}
+	@Override
+	public void mouseClicked(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseEntered(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseExited(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mousePressed(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseReleased(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

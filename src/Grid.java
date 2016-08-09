@@ -6,6 +6,10 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
+import java.awt.MouseInfo;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,12 +18,13 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 
-public class Grid extends JPanel{
+public class Grid extends JPanel implements MouseMotionListener {
+
 	
 	static int gameLength=20;
 	Cell[][] space = new Cell[gameLength][gameLength];
 	JFrame window = new JFrame("Sheep and Wolves");
-	JPanel windowBackground = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));
+	JPanel windowBackground = new JPanel(new FlowLayout(FlowLayout.LEFT,10,10));
 	JPanel innerWindowBackground = new JPanel(new BorderLayout());
 	//JPanel gridBackground = new JPanel(new GridLayout(20,20));
 	JPanel gridBackground = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));
@@ -46,11 +51,24 @@ public class Grid extends JPanel{
 		windowBackground.add(gridBackground);
 		JButton jbnSampleButtons = new JButton("Button 3 (LINE_START)");
 		jbnSampleButtons.setSize(10,10);
-		innerWindowBackground.add(jbnSampleButtons, BorderLayout.PAGE_START);
+		
 		innerWindowBackground.add(windowBackground,BorderLayout.CENTER);
 		window.add(innerWindowBackground);
 		window.pack();
+		window.addMouseMotionListener(this);
+		
 		window.setVisible(true);	
+		
+	}
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println(MouseInfo.getPointerInfo().getLocation());
 		
 	}
 }
