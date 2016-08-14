@@ -1,16 +1,11 @@
 import java.awt.Canvas;
-import java.awt.Component;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseListener;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import javax.swing.JPanel;
-
-import org.w3c.dom.events.MouseEvent;
 
 
 public class Cell extends Canvas implements MouseListener{
-	
+	Color cellColor=new Color(0,(int)(Math.random()*255),0);
 	static int gameSize=34;
 	static int counter=0;
 	int squareID=0;
@@ -26,8 +21,9 @@ public class Cell extends Canvas implements MouseListener{
 		
 	}
 	public void paint(Graphics g){
-		//System.out.println(exVal+"Y:"+whyVal);
-		g.drawRect(0, 0, gameSize, gameSize);
+		g.setColor(cellColor);
+		g.fillRect(0, 0, gameSize, gameSize);
+		this.addMouseListener(this);
 	}
 	public int getID(){
 		return squareID;
@@ -39,13 +35,16 @@ public class Cell extends Canvas implements MouseListener{
 	}
 	@Override
 	public void mouseEntered(java.awt.event.MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		e.getComponent().getGraphics().clearRect(0, 0, gameSize, gameSize);
+		Graphics g = e.getComponent().getGraphics();
+		g.setColor(new Color(75,75,75));
+		g.fillRect(0, 0, gameSize, gameSize);
 	}
 	@Override
 	public void mouseExited(java.awt.event.MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		e.getComponent().getGraphics().clearRect(0, 0, gameSize, gameSize);
+		Graphics g = e.getComponent().getGraphics();
+		this.paint(g);
 	}
 	@Override
 	public void mousePressed(java.awt.event.MouseEvent e) {
