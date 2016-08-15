@@ -1,11 +1,15 @@
 import java.awt.Color;
+import java.awt.Graphics;
 
 public class Shepherd extends Character{
 
 	public Shepherd(){
-		location = new Cell();
-		location.exVal=5;
-		location.whyVal=5;
-		location.cellColor=new Color(0,200,0);
+		location.cellColor=new Color(0,255,0);
+		location.exVal = (int) (Math.random()*19);
+		location.whyVal = (int) (Math.random()*19);		
+	}
+
+	public void paint(Graphics g) {
+		
 	}
 }

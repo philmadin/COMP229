@@ -1,5 +1,5 @@
+import java.awt.Canvas;
 
-public class Character {
-	Cell location;
-
+abstract public class Character{	
+	public Cell location = new Cell();
 }
