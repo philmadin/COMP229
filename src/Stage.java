@@ -1,40 +1,38 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
 public class Stage{
-	
 
-	static JFrame window = new JFrame("Sheep and Wolves");
-	static Grid rootGrid = new Grid();
-	static JPanel innerWindowBackground = new JPanel(new BorderLayout());
+	static JFrame window;
+	static JPanel base;
+	static Grid rootGrid;
 	
-	static void mainer() {
+	void mainer() {
 		System.out.println("~~~~~");
 		System.out.println("Sheep and Wolves");
 		System.out.println("~~~~~");
 		
+		window = new JFrame("Sheep and Wolves");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setPreferredSize(new Dimension(1280,720));
 		
-
-		rootGrid.setPreferredSize(new Dimension(1280,720));
-		Character[] c = new Character[3]; 
-		c[0] = new Wolf();
-		c[1] = new Sheep();
-		c[2] = new Shepherd();
-		for(Character temp: c){
-			//root.space[temp.location.exVal][temp.location.whyVal].cellColor=temp.location.cellColor;
-		}
-		//window.add(rootGrid.innerWindowBackground);
-		window.add(rootGrid);
+		base =  new JPanel(new FlowLayout(FlowLayout.LEFT));
+		base.setPreferredSize(new Dimension(1280,720));
+		window.add(base);
+		
+		rootGrid = new Grid();
+		base.add(rootGrid);
+		
 		window.pack();		
 		window.setVisible(true);
 	}
 	public static void main(String[] args){
-		mainer();
+		Stage temp = new Stage();
+		temp.mainer();
 	}
 }
